@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthGuard } from './services/auth-guard.service';
 
 
 
@@ -34,7 +35,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

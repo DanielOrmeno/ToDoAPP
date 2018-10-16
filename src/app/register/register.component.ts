@@ -17,7 +17,7 @@ import { resolve } from 'dns';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(public afAuth:AngularFireAuth) { 
+  constructor(public afAuth:AngularFireAuth,private router:Router) { 
     this.registerForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -28,7 +28,10 @@ export class RegisterComponent implements OnInit {
       this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
-      }, err => reject(err))
+        this.router.navigate(['/todo']);
+      }, err => {
+        reject(err)
+      })
     })
   }
 

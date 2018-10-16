@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(public afAuth:AngularFireAuth) { 
+  constructor(public afAuth:AngularFireAuth,private router:Router) { 
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
       .signInWithPopup(provider)
       .then(res => {
         resolve(res);
-      })
+        this.router.navigate(['/todo']);
+      }),err=>{
+        reject(err);
+      }
     })
   }
   loginFb(){
@@ -44,8 +47,8 @@ export class LoginComponent implements OnInit {
       .signInWithPopup(provider)
       .then(res => {
         resolve(res);
+        this.router.navigate(['/todo']);
       }, err => {
-        console.log(err);
         reject(err);
       })
     })  
@@ -55,13 +58,12 @@ export class LoginComponent implements OnInit {
         this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
         .then(res => {
           resolve(res);
-        }, err => reject(err))
+          this.router.navigate(['/todo']);
+        }, err => {
+          reject(err)
+        })
       })
     }
-  
-  logout() {
-    this.afAuth.auth.signOut();
-  }
 
   ngOnInit() {
   }

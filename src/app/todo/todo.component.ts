@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoService} from './shared/todo.service'
 import { element } from 'protractor';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +15,7 @@ import { element } from 'protractor';
 })
 export class TodoComponent implements OnInit {
   toDoListArray:any[];
-  constructor(private toDoService: TodoService) { }
+  constructor(private toDoService: TodoService, public afAuth:AngularFireAuth,private router:Router) { }
 
   ngOnInit() {
     this.toDoService.getToDoList().snapshotChanges().subscribe(item=>{
@@ -41,5 +43,9 @@ export class TodoComponent implements OnInit {
 
   onDelete($key:string){
     this.toDoService.removeTitle($key);
+  }
+  logout() {
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/login']);
   }
 }
