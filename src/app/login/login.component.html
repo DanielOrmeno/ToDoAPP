@@ -1,0 +1,34 @@
+<div class = "container login-container col-sm-6 col-md-6">
+  <div  *ngIf="afAuth.authState | async; let user; else showLogin">
+      <h4>Hello {{ user.displayName }}!</h4>
+      <button type="button" class="btn btn-default btn-sm" (click)="logout()">Logout</button>  
+  </div>
+
+  <ng-template #showLogin >
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label >Email</label>
+        <input type="email" class="form-control"  formControlName="email" required>
+      </div>
+      <div class="form-group">
+        <label >Password</label>
+        <input type="password" class="form-control" formControlName="password" required>
+        <label class="error">{{errorMessage}}</label>
+        <label class="success">{{successMessage}}</label>
+      </div>
+    </form>
+    <div class="button-wrapper">
+      
+      <div class = "btn-group-vertical">
+        <button type="submit" class="btn btn-success btn-block" (click)="loginEmail(loginForm.value)" >Login with Email</button>
+        <button type="button" class="btn btn-warning " (click)="loginGoogle()">Login with Google</button>
+        <button type="button" class="btn btn-danger " (click)="loginFb()">Login with Facebook</button>
+      </div>
+  </div>
+  <div class="register-wrapper">
+    <p>Don't have an account?   <a routerLink="../register" style="color: white">Create one !</a></p>
+  </div>  
+  </ng-template>
+</div>
+
+

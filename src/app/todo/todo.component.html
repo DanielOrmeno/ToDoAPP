@@ -1,0 +1,30 @@
+<div class="container todo-container col-sm-6 col-md-6">
+  <div class="jumbotron" style="padding:45px 0px">
+      <div class="img-wrapper">
+        <img src="../favicon.ico" alt="Angular Icon" class="img-center">
+      </div>
+      <h3 class="text-center">Epic TODO App</h3>
+    
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" #itemTitle>
+      <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+        <i class="fa fa-plus-square fa-lg"></i>
+      </div>
+    </div>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of toDoListArray">
+            {{item.title}}
+          <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <i class="fa fa-trash-o fa-lg"></i>
+          </span>
+          <span class="hover-cursor pull-right" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+            <i class="fa fa-trash-o fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+          </span>
+           
+        </li>  
+      </ul>
+    </div>
+</div>
+
