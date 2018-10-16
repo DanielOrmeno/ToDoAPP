@@ -74,5 +74,12 @@
 .logout-wrapper{
     color: white;
     display: inline;
+    margin-top: 20px;
+}
+
+.logout-wrapper a{
+    color: white;
+    float: right;
+
 }
 
