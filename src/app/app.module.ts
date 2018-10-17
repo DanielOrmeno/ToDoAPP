@@ -9,15 +9,10 @@ import {environment} from '../environments/environment';
 import { TodoComponent } from './todo/todo.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthGuard } from './services/auth-guard.service';
-
-
-
-
-
 
 @NgModule({
   declarations: [

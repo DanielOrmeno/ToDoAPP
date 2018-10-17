@@ -3,14 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { patch } from 'webdriver-js-extender';
-import{ AuthGuard} from './services/auth-guard.service'
+import { AuthGuard } from './services/auth-guard.service';
 
 export const router: Routes = [
   { path: '', redirectTo: 'todo', pathMatch: 'full'},
-  { path:'login', component:LoginComponent},
-  { path:'todo', component:TodoComponent,canActivate: [AuthGuard] },
-  { path:'register', component:RegisterComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'todo', component: TodoComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
